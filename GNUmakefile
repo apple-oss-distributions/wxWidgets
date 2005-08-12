@@ -76,18 +76,40 @@ $(WXWIDGETSBUILD):
 	rm -rf $(PROJECT) && \
 	echo mv $(NAMEVERS) $(PROJECT) && \
 	mv $(NAMEVERS) $(PROJECT) && \
-	echo ed - $(PROJECT)/src/common/dynlib.cpp \< fix/dynlib.cpp.ed && \
-	ed - $(PROJECT)/src/common/dynlib.cpp < fix/dynlib.cpp.ed && \
-	echo ed - $(PROJECT)/src/mac/carbon/dnd.cpp \< fix/dnd.cpp.ed && \
-	ed - $(PROJECT)/src/mac/carbon/dnd.cpp < fix/dnd.cpp.ed && \
+	echo ed - $(PROJECT)/configure \< fix/configure.ed && \
+	ed - $(PROJECT)/configure < fix/configure.ed && \
 	echo ed - $(PROJECT)/Makefile.in \< fix/Makefile.in.ed && \
 	ed - $(PROJECT)/Makefile.in < fix/Makefile.in.ed && \
+	echo ed - $(PROJECT)/include/wx/defs.h \< fix/defs.h.ed && \
+	ed - $(PROJECT)/include/wx/defs.h < fix/defs.h.ed && \
+	echo ed - $(PROJECT)/include/wx/platform.h \< fix/platform.h.ed && \
+	ed - $(PROJECT)/include/wx/platform.h < fix/platform.h.ed && \
+	echo ed - $(PROJECT)/include/wx/mac/carbon/config_xcode.h \< fix/config_xcode.h.ed && \
+	ed - $(PROJECT)/include/wx/mac/carbon/config_xcode.h < fix/config_xcode.h.ed && \
+	echo ed - $(PROJECT)/src/common/dobjcmn.cpp \< fix/dobjcmn.cpp.ed && \
+	ed - $(PROJECT)/src/common/dobjcmn.cpp < fix/dobjcmn.cpp.ed && \
+	echo ed - $(PROJECT)/src/common/dynlib.cpp \< fix/dynlib.cpp.ed && \
+	ed - $(PROJECT)/src/common/dynlib.cpp < fix/dynlib.cpp.ed && \
+	echo ed - $(PROJECT)/src/common/strconv.cpp \< fix/strconv.cpp.ed && \
+	ed - $(PROJECT)/src/common/strconv.cpp < fix/strconv.cpp.ed && \
+	echo ed - $(PROJECT)/src/mac/carbon/dc.cpp \< fix/dc.cpp.ed && \
+	ed - $(PROJECT)/src/mac/carbon/dc.cpp < fix/dc.cpp.ed && \
+	echo ed - $(PROJECT)/src/mac/carbon/dnd.cpp \< fix/dnd.cpp.ed && \
+	ed - $(PROJECT)/src/mac/carbon/dnd.cpp < fix/dnd.cpp.ed && \
+	echo ed - $(PROJECT)/src/mac/carbon/fontdlg.cpp \< fix/fontdlg.cpp.ed && \
+	ed - $(PROJECT)/src/mac/carbon/fontdlg.cpp < fix/fontdlg.cpp.ed && \
 	echo ed - $(PROJECT)/src/mac/carbon/morefilex/MoreFilesX.c \< fix/MoreFilesX.c.ed && \
 	ed - $(PROJECT)/src/mac/carbon/morefilex/MoreFilesX.c < fix/MoreFilesX.c.ed && \
 	echo ed - $(PROJECT)/src/mac/carbon/morefilex/MoreFilesX.h \< fix/MoreFilesX.h.ed && \
 	ed - $(PROJECT)/src/mac/carbon/morefilex/MoreFilesX.h < fix/MoreFilesX.h.ed && \
-	echo ed - $(PROJECT)/src/mac/carbon/fontdlg.cpp \< fix/fontdlg.cpp.ed && \
-	ed - $(PROJECT)/src/mac/carbon/fontdlg.cpp < fix/fontdlg.cpp.ed && \
+	echo ed - $(PROJECT)/src/mac/carbon/textctrl.cpp \< fix/textctrl.cpp.ed && \
+	ed - $(PROJECT)/src/mac/carbon/textctrl.cpp < fix/textctrl.cpp.ed && \
+	echo ed - $(PROJECT)/src/mac/carbon/utils.cpp \< fix/utils.cpp.ed && \
+	ed - $(PROJECT)/src/mac/carbon/utils.cpp < fix/utils.cpp.ed && \
+	echo ed - $(PROJECT)/src/unix/gsocket.cpp \< fix/gsocket.cpp.ed && \
+	ed - $(PROJECT)/src/unix/gsocket.cpp < fix/gsocket.cpp.ed && \
+	echo ed - $(PROJECT)/$(WXPYTHONPROJECT)/src/mac/_core_wrap.cpp \< fix/_core_wrap.cpp.ed && \
+	ed - $(PROJECT)/$(WXPYTHONPROJECT)/src/mac/_core_wrap.cpp < fix/_core_wrap.cpp.ed && \
 	for i in configure src/html/htmlctrl/webkit/webkit.mm; do \
 	    echo ed - $(PROJECT)/$$i \< fix/WebKit.ed && \
 	    ed - $(PROJECT)/$$i < fix/WebKit.ed; \

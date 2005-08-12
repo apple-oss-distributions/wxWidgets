@@ -17,6 +17,18 @@ include $(MAKEFILEPATH)/CoreOS/ReleaseControl/GNUSource.make
 
 Install_Flags := $(shell echo $(Install_Flags) | sed 's/prefix=[^ ]* *//')
 Install_Target = install
+FIX = $(SRCROOT)/fix
+
+##---------------------------------------------------------------------
+# Patch Makefiles and pyconfig.h just after running configure
+##---------------------------------------------------------------------
+ConfigStamp2 = $(ConfigStamp)2
+
+configure:: $(ConfigStamp2)
+
+$(ConfigStamp2): $(ConfigStamp)
+	$(_v) ed - ${OBJROOT}/lib/wx/include/mac-unicode-debug-2.5/wx/setup.h < $(FIX)/setup.h.ed
+	$(_v) $(TOUCH) $(ConfigStamp2)
 
 # Environment code from Common.make and GNUSource.make
 ifneq "$(strip $(CFLAGS))" ""
